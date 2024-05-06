@@ -13,18 +13,22 @@ public class ArticleService {
     @Resource
     private ArticleMapper articleMapper;
 
+    // 获取用户的文章数量
     public int getArtCountByUid(Integer uid){
         return articleMapper.getArtCountByUid(uid);
     }
 
+    // 获取文章列表页
     public List<Articleinfo> getMyList(Integer uid) {
         return articleMapper.getMyList(uid);
     }
 
+    // 删除文章
     public int del(Integer id, Integer uid) {
         return articleMapper.del(id, uid);
     }
 
+    // 查看全文
     public Articleinfo getDetail(Integer id) {
         return articleMapper.getDetail(id);
     }
@@ -39,7 +43,7 @@ public class ArticleService {
         return articleMapper.add(articleinfo);
     }
 
-    // 修改文章
+    // 更新文章
     public int update(Articleinfo articleinfo) {
         return articleMapper.update(articleinfo);
     }

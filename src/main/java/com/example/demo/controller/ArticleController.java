@@ -48,7 +48,7 @@ public class ArticleController {
         return AjaxResult.success(articleService.del(id, user.getId()));
     }
 
-    // 显示文章详情
+    // 查看全文
     @RequestMapping("/detail")
     public AjaxResult getDetail(Integer id) {
         if (id == null || id <= 0)
@@ -85,7 +85,7 @@ public class ArticleController {
         return AjaxResult.success(articleService.add(articleinfo));
     }
 
-    // 修改文章
+    // 更新文章
     @RequestMapping("/update")
     public AjaxResult update(HttpServletRequest request, Articleinfo articleinfo) {
         // 非空校验
@@ -138,36 +138,5 @@ public class ArticleController {
         result.put("pcount", pcount);
         return AjaxResult.success(result);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

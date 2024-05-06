@@ -6,7 +6,7 @@ import org.springframework.util.StringUtils;
 import java.util.UUID;
 
 /**
- * 关于密码的工具类
+ * 关于密码的工具类，进行加密的时候才会用到
  */
 public class PasswordUtils {
     // 1.加盐并生成密码
@@ -54,6 +54,7 @@ public class PasswordUtils {
     }
 
 
+    // 测试加密算法
     public static void main(String[] args) {
         String password = "12345";
         String finalPassword = encrypt(password);

@@ -59,7 +59,7 @@
         initEdit("# 在这里写下一篇博客"); // 初始化编译器的值
         // 提交
         function mysub(){
-            if (confirm("确认提交？")) {
+            // if (confirm("确认提交？")) {
                // 1.非空校验
                var title = jQuery("#title");
                if (title.val() == "" ) {
@@ -83,19 +83,20 @@
                     },
                     success:function(result) {
                         if (result != null && result.code == 200 && result.data == 1) {
-                            if (confirm("恭喜，文章添加成功！是否继续添加文章？")) {
-                                // 刷新当前页面
-                                location.href = location.href;
-                            } else {
+<!--                            if (confirm("恭喜，文章添加成功！是否继续添加文章？")) {-->
+<!--                                // 刷新当前页面-->
+<!--                                location.href = location.href;-->
+<!--                            } else {-->
+<!--                                location.href = "/myblog_list.html";-->
+<!--                            }-->
                                 location.href = "/myblog_list.html";
-                            }
                         } else {
                             alert("抱歉，文章添加失败，请重试！");
                         }
                     }
                });
 
-            }
+            // }
 
             // alert(editor.getValue()); // 获取值
             // editor.setValue("#123") // 设置值
