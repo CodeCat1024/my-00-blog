@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.common.AjaxResult;
 import com.example.demo.common.AppVariable;
-import com.example.demo.common.PasswordUtils;
 import com.example.demo.common.UserSessionUtil;
 import com.example.demo.entity.Userinfo;
 import com.example.demo.entity.vo.UserinfoVO;
@@ -26,16 +25,6 @@ public class UserController {
 
     @Autowired
     private ArticleService articleService;
-
-    // 注册功能
-    @RequestMapping("/reg")
-    public AjaxResult reg(Userinfo userinfo) {
-        // 非空校验和参数有效性校验
-        if(userinfo == null || !StringUtils.hasLength(userinfo.getUsername()) || !StringUtils.hasLength(userinfo.getPassword()) )
-            return AjaxResult.fail(-1, "非法参数");
-        // 参数有效，用户信息插入到数据库
-        return AjaxResult.success(userService.reg(userinfo));
-    }
 
     // 登录功能
     @RequestMapping("/login")
@@ -109,45 +98,6 @@ public class UserController {
         userinfoVO.setArtCount(articleService.getArtCountByUid(id));
         return AjaxResult.success(userinfoVO);
     }
-
-    // 加盐版本
-//    @RequestMapping("/reg")
-//    public AjaxResult reg(Userinfo userinfo) {
-//        // 非空校验和参数有效性校验
-//        if(userinfo == null || !StringUtils.hasLength(userinfo.getUsername()) || !StringUtils.hasLength(userinfo.getPassword()) )
-//            return AjaxResult.fail(-1, "非法参数");
-//        // 密码加盐处理
-//        userinfo.setPassword(PasswordUtils.encrypt(userinfo.getPassword()));
-//        return AjaxResult.success(userService.reg(userinfo));
-//    }
-
-
-//    // 加盐版本
-//    @RequestMapping("/login")
-//    public AjaxResult login(HttpServletRequest request, String username, String password) {
-//        // 1.非空校验
-//        if (!StringUtils.hasLength(username) || !StringUtils.hasLength(password))
-//            return AjaxResult.fail(-1, "非法请求");
-//
-//        // 2.查询数据库
-//        Userinfo userinfo = userService.getUserByName(username);
-//        if (userinfo != null && userinfo.getId() > 0) {
-//            // 有效的用户，判断密码是否正确（前端传过来的密码跟数据库的密码是否相同）
-//            if (PasswordUtils.check(password, userinfo.getPassword())) {
-//                // 登录成功
-//                // 返回给前端之前，隐藏敏感信息
-//                userinfo.setPassword("");
-//
-//                // 将用户存储到 session，登录之后持有 Session 之后才能通过拦截器
-//                HttpSession session = request.getSession(); // 默认为 true
-//                session.setAttribute(AppVariable.USER_SESSION_KEY, userinfo);
-//
-//                return AjaxResult.success(userinfo);
-//            }
-//        }
-//        return AjaxResult.success(0, null);
-//    }
-
 
 }
 

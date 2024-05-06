@@ -6,9 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserMapper {
-    // 注册功能
-    public int reg(Userinfo userinfo);
-
     // 登录功能
     Userinfo getUserByName(@Param("username") String username);
 

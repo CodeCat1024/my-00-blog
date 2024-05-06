@@ -30,17 +30,6 @@ create table articleinfo(
     `state` int default 1
 ) default charset 'utf8mb4';
 
--- 创建视频表
-drop table if exists videoinfo;
-create table videoinfo(
-    vid int primary key,
-    `title` varchar(250),
-    `url` varchar(1000),
-    createtime timestamp default current_timestamp,
-    updatetime timestamp default current_timestamp,
-    uid int
-) default charset 'utf8mb4';
-
 -- 添加用户测试信息
 INSERT INTO `mycnblog`.`userinfo` (`id`, `username`, `password`,`photo`, `createtime`, `updatetime`, `state`)
 VALUES (1, 'admin', 'admin', '', '2021-12-06 17:10:48', '2021-12-08 17:22:10', 1);

@@ -11,11 +11,6 @@ public class UserService {
     @Resource
     private UserMapper userMapper;
 
-    // 注册功能
-    public int reg(Userinfo userinfo) {
-        return userMapper.reg(userinfo);
-    }
-
     // 登录功能
     public Userinfo getUserByName (String username) {
         return userMapper.getUserByName(username);
